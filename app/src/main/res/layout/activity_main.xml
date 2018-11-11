@@ -17,15 +17,11 @@
         android:titleTextColor="@color/white"
         app:theme="@style/MyCustomToolBarTheme"/>
 
-    <ListView
-        android:layout_marginTop="?actionBarSize"
-        android:id="@+id/list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-    <!--<android.support.v7.widget.RecyclerView
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/RVMain"/>-->
+        android:layout_marginTop="?actionBarSize"
+        android:scrollbars="vertical"
+        android:id="@+id/RVMain"/>
 
 </android.support.constraint.ConstraintLayout>

@@ -2,11 +2,10 @@ package com.evilgeniuses.condorlabs;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +22,10 @@ public class MainActivity extends AppCompatActivity {
     // Componentes de la vista
     private Toolbar TMain;
     private RecyclerView RVMain;
-    private ListView list;
+    private RecyclerView.Adapter RVAdapter;
+    private RecyclerView.LayoutManager RVLManager;
 
-    ArrayList<String> TeamsNames = new ArrayList<>();
+    private ArrayList<TeamModel> Teams;
 
     String API_BASE_URL = "https://www.thesportsdb.com/api/v1/json/1/";
 
@@ -36,12 +36,18 @@ public class MainActivity extends AppCompatActivity {
 
         // Declaración de componentes de la vista
         TMain = findViewById(R.id.TMain);
-        list = findViewById(R.id.list);
-        //RVMain  =   findViewById(R.id.RVMain);
+        RVMain  =   findViewById(R.id.RVMain);
 
         setSupportActionBar(TMain);//Se cambia el Action bar por nuestra toolbar
         TMain.setTitle(R.string.app_name);
         TMain.setTitleTextColor(getResources().getColor(R.color.white));
+
+        RVMain.setHasFixedSize(true);
+
+        RVLManager = new LinearLayoutManager(this);
+        RVMain.setLayoutManager(RVLManager);
+
+
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
@@ -62,10 +68,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<TeamListModel> call, Response<TeamListModel> response) {
                 TeamListModel   teamListModel   =   response.body();
-                List<TeamModel> teams   =   teamListModel.getTeams();
-                for ( TeamModel model : teams ) {
-                    TeamsNames.add(model.getStrTeam());
-                }
+                Teams   = (ArrayList<TeamModel>) teamListModel.getTeams();
+                RVAdapter = new CustomRVAdapter(getApplicationContext(),Teams);
+                RVMain.setAdapter(RVAdapter);
+                RVAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -73,13 +79,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("RESPUESTA",t.getMessage());
             }
         });
-
-        ArrayAdapter<String> itemsAdapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, TeamsNames);
-
-        list.setAdapter(itemsAdapter);
-        itemsAdapter.notifyDataSetChanged();
-
     }
 
 }
