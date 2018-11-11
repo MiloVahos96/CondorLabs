@@ -13,12 +13,19 @@
         android:layout_height="?actionBarSize"
         android:layout_gravity="top"
         android:elevation="4sp"
+        android:background="@color/colorPrimary"
         android:titleTextColor="@color/white"
         app:theme="@style/MyCustomToolBarTheme"/>
 
-    <android.support.v7.widget.RecyclerView
+    <ListView
+        android:layout_marginTop="?actionBarSize"
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!--<android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/RVMain"/>
+        android:id="@+id/RVMain"/>-->
 
 </android.support.constraint.ConstraintLayout>

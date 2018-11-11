@@ -1,41 +1,54 @@
 package com.evilgeniuses.condorlabs;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
 public class TeamModel {
 
-    private String name;            // Team name
-    private String description;     // Team description
-    private String year;            // Foundation Year
-
-    public TeamModel(String name, String description, String year) {
-        this.name = name;
-        this.description = description;
-        this.year = year;
-    }
+    private String strTeam;         // Team name
+    private String strStadium;      // Team stadium
+    private String strTeamBadge;    // Team Badge URL
+    private String idTeam;          // Id del equipo
 
     public TeamModel() {}
 
-    public String getName() {
-        return name;
+    public TeamModel(String strTeam, String strStadium, String strTeamBadge, String idTeam) {
+        this.strTeam = strTeam;
+        this.strStadium = strStadium;
+        this.strTeamBadge = strTeamBadge;
+        this.idTeam = idTeam;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getStrTeam() {
+        return strTeam;
     }
 
-    public String getDescription() {
-        return description;
+    public void setStrTeam(String strTeam) {
+        this.strTeam = strTeam;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public String getStrStadium() {
+        return strStadium;
     }
 
-    public String getYear() {
-        return year;
+    public void setStrStadium(String strStadium) {
+        this.strStadium = strStadium;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public String getStrTeamBadge() {
+        return strTeamBadge;
     }
 
+    public void setStrTeamBadge(String strTeamBadge) {
+        this.strTeamBadge = strTeamBadge;
+    }
+
+    public String getIdTeam() {
+        return idTeam;
+    }
+
+    public void setIdTeam(String idTeam) {
+        this.idTeam = idTeam;
+    }
 }
