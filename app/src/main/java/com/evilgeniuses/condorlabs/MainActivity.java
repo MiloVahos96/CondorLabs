@@ -1,14 +1,15 @@
 package com.evilgeniuses.condorlabs;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -47,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
         RVLManager = new LinearLayoutManager(this);
         RVMain.setLayoutManager(RVLManager);
 
-
-
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
         Retrofit.Builder builder =
@@ -70,6 +69,24 @@ public class MainActivity extends AppCompatActivity {
                 TeamListModel   teamListModel   =   response.body();
                 Teams   = (ArrayList<TeamModel>) teamListModel.getTeams();
                 RVAdapter = new CustomRVAdapter(getApplicationContext(),Teams);
+
+                ((CustomRVAdapter) RVAdapter).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent   =   new Intent(getApplicationContext(),TeamDetailActivity.class);
+                        intent.putExtra("ID", Teams.get(RVMain.getChildAdapterPosition(view)).getIdTeam());
+                        intent.putExtra("NAME",  Teams.get(RVMain.getChildAdapterPosition(view)).getStrTeam());
+                        intent.putExtra("YEAR", Teams.get(RVMain.getChildAdapterPosition(view)).getIntFormedYear());
+                        intent.putExtra("DESC",  Teams.get(RVMain.getChildAdapterPosition(view)).getStrDescriptionEN());
+                        intent.putExtra("BADGE",  Teams.get(RVMain.getChildAdapterPosition(view)).getStrTeamBadge());
+                        intent.putExtra("JERSEY",  Teams.get(RVMain.getChildAdapterPosition(view)).getStrTeamJersey());
+                        intent.putExtra("WEB",  Teams.get(RVMain.getChildAdapterPosition(view)).getStrWebsite());
+                        intent.putExtra("FACEBOOK",  Teams.get(RVMain.getChildAdapterPosition(view)).getStrFacebook());
+                        intent.putExtra("INSTAGRAM",  Teams.get(RVMain.getChildAdapterPosition(view)).getStrInstagram());
+                        startActivity(intent);
+                    }
+                });
+
                 RVMain.setAdapter(RVAdapter);
                 RVAdapter.notifyDataSetChanged();
             }

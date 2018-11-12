@@ -1,9 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:nestedScrollingEnabled="true"
+    android:focusableInTouchMode="false"
     tools:context=".TeamDetailActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:stretchColumns="1"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5sp"
+                android:layout_marginBottom="2sp"
+                android:text="Team:"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+                android:textSize="17sp"
+                android:padding="4sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5sp"
+                android:layout_marginBottom="2sp"
+                android:id="@+id/TEquipo"
+                android:textColor="@color/colorAccent"
+                android:textSize="17sp"
+                android:padding="4sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5sp"
+                android:layout_marginBottom="2sp"
+                android:text="Foundation Year:"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+                android:textSize="17sp"
+                android:padding="4sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5sp"
+                android:layout_marginBottom="2sp"
+                android:id="@+id/TFYear"
+                android:textColor="@color/colorAccent"
+                android:textSize="15sp"
+                android:padding="4sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5sp"
+                android:layout_marginBottom="2sp"
+                android:text="Description:"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+                android:textSize="17sp"
+                android:padding="4sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5sp"
+                android:layout_marginBottom="2sp"
+                android:id="@+id/TDescription"
+                android:textColor="@color/colorAccent"
+                android:textSize="15sp"
+                android:padding="4sp"/>
+
+            <ImageView
+                android:layout_width="140sp"
+                android:layout_height="140sp"
+                android:id="@+id/IVTeamBadge"
+                android:layout_gravity="center" />
+
+            <ImageView
+                android:layout_width="140sp"
+                android:layout_height="140sp"
+                android:id="@+id/IVTeamJersey"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5sp"
+                android:layout_marginBottom="2sp"
+                android:text="NEXT EVENTS:"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+                android:textSize="17sp"
+                android:padding="4sp"/>
+
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="200sp"
+                android:layout_gravity="center"
+                android:layout_marginStart="10sp"
+                android:nestedScrollingEnabled="true"
+                android:id="@+id/LEvents"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5sp"
+                android:layout_marginBottom="2sp"
+                android:text="RRSS:"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+                android:textSize="17sp"
+                android:padding="4sp"/>
+
+            <ImageButton
+                android:layout_width="60sp"
+                android:layout_height="60sp"
+                android:src="@drawable/facebook_black"
+                android:background="@color/white"
+                android:id="@+id/BFacebookLink"
+                android:visibility="gone"
+                android:contentDescription="FACEBOOK"
+                android:layout_gravity="center"/>
+
+            <ImageButton
+                android:layout_width="60sp"
+                android:layout_height="60sp"
+                android:src="@drawable/instgram_black"
+                android:background="@color/white"
+                android:id="@+id/BInstagramLink"
+                android:visibility="gone"
+                android:contentDescription="INSTAGRAM"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/TWeb"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:autoLink="web"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10sp"
+                android:visibility="gone">
+            </TextView>
+
+
+
+        </LinearLayout>
+    </TableLayout>
+</ScrollView>
